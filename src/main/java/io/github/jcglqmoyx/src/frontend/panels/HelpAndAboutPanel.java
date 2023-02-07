@@ -6,8 +6,8 @@ import java.net.URI;
 
 public final class HelpAndAboutPanel extends JPanel {
     private static HelpAndAboutPanel HELP_AND_ABOUT_PANEL;
-    private static final String DOCUMENTATION_URL = "https://baidu.com";
-    private static final String AUTHOR_CONTACT_URL = "https://linktr.ee/jcglqmoyx";
+    private static final String DOCUMENTATION_URL = "https://zhuanlan.zhihu.com/p/46713442";
+    private static final String AUTHOR_CONTACT_URL = "https://linktree.cn/jcglqmoyx";
 
     private HelpAndAboutPanel() {
         this.setBorder(BorderFactory.createTitledBorder(""));

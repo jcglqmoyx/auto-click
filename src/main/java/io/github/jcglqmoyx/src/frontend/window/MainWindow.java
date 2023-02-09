@@ -3,6 +3,7 @@ package io.github.jcglqmoyx.src.frontend.window;
 import com.github.kwhat.jnativehook.NativeHookException;
 import io.github.jcglqmoyx.src.frontend.base.NativeFrame;
 import io.github.jcglqmoyx.src.frontend.panels.*;
+import io.github.jcglqmoyx.src.global.Global;
 
 import javax.swing.*;
 
@@ -20,7 +21,15 @@ public class MainWindow extends NativeFrame {
         this.add(HelpAndAboutPanel.getInstance(250, 280, 230, 100));
         this.add(WorkingStatusPanel.getInstance(10, 390, 470, 50));
 
-        this.setSize(500, 480);
+        int height = 0;
+        if (Global.OS.contains("mac")) {
+            height = 480;
+        } else if (Global.OS.contains("linux")) {
+            height = 600;
+        } else if (Global.OS.contains("windows")) {
+            height = 600;
+        }
+        this.setSize(500, height);
         this.setResizable(false);
         this.setVisible(true);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

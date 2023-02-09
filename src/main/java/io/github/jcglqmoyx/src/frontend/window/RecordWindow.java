@@ -92,13 +92,13 @@ public class RecordWindow extends JFrame {
 
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
         final int WIDTH = 340, OFFSET = 50;
-        int HEIGHT;
+        int height;
         if (Global.OS.contains("mac")) {
-            HEIGHT = 100;
+            height = 100;
         } else if (Global.OS.contains("linux")) {
-            HEIGHT = 160;
+            height = 160;
         } else {
-            HEIGHT = 110;
+            height = 110;
         }
         this.setBounds((int) screenSize.getWidth() - WIDTH - OFFSET, OFFSET, WIDTH, HEIGHT);
         this.setResizable(false);

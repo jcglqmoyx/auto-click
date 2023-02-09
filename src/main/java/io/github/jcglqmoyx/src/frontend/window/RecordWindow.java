@@ -15,20 +15,20 @@ public class RecordWindow extends JFrame {
         this.setLayout(null);
 
         JButton recordButton = new JButton("Record");
-        recordButton.setBounds(0, 20, 80, 30);
+        recordButton.setBounds(0, 20, 120, 30);
         this.add(recordButton);
 
         JLabel xLabel = new JLabel("X:");
-        xLabel.setBounds(100, 10, 20, 30);
+        xLabel.setBounds(140, 10, 20, 30);
         this.add(xLabel);
         JLabel xCoordinateLabel = new JLabel("0");
-        xCoordinateLabel.setBounds(120, 10, 50, 30);
+        xCoordinateLabel.setBounds(160, 10, 50, 30);
         this.add(xCoordinateLabel);
         JLabel yLabel = new JLabel("Y:");
-        yLabel.setBounds(100, 30, 20, 30);
+        yLabel.setBounds(140, 30, 20, 30);
         this.add(yLabel);
         JLabel yCoordinateLabel = new JLabel("0");
-        yCoordinateLabel.setBounds(120, 30, 50, 30);
+        yCoordinateLabel.setBounds(160, 30, 50, 30);
         this.add(yCoordinateLabel);
 
         new Timer().schedule(new TimerTask() {
@@ -41,11 +41,11 @@ public class RecordWindow extends JFrame {
         }, 0, 100);
 
         JLabel recordsLabel = new JLabel("Records:");
-        recordsLabel.setBounds(180, 20, 70, 30);
+        recordsLabel.setBounds(220, 20, 70, 30);
         this.add(recordsLabel);
         JLabel recordsNumberLabel = new JLabel(String.valueOf(Global.pointsList == null ? 0 : Global.pointsList.size()));
         Global.recordNumberLabel = recordsNumberLabel;
-        recordsNumberLabel.setBounds(250, 20, 50, 30);
+        recordsNumberLabel.setBounds(290, 20, 50, 30);
         this.add(recordsNumberLabel);
 
         recordButton.addMouseListener(new MouseListener() {
@@ -85,7 +85,7 @@ public class RecordWindow extends JFrame {
         });
 
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        final int WIDTH = 300, HEIGHT = 100, OFFSET = 50;
+        final int WIDTH = 340, HEIGHT = 100, OFFSET = 50;
         this.setBounds((int) screenSize.getWidth() - WIDTH - OFFSET, OFFSET, WIDTH, HEIGHT);
         this.setResizable(false);
         this.setVisible(true);

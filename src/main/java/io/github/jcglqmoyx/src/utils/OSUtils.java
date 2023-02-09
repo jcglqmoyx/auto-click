@@ -1,5 +1,7 @@
 package io.github.jcglqmoyx.src.utils;
 
+import io.github.jcglqmoyx.src.global.Global;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -48,12 +50,8 @@ public class OSUtils {
         return machineID;
     }
 
-    public static String getOSName() {
-        return System.getProperty("os.name").toLowerCase();
-    }
-
     public static String getMachineID() throws IOException {
-        String OS = getOSName();
+        String OS = Global.OS;
         if (OS.contains("win")) {
             return getWindowsMachineID();
         } else if (OS.contains("nix") || OS.contains("nux") || OS.contains("aix")) {

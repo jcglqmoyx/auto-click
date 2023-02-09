@@ -15,7 +15,13 @@ public class RecordWindow extends JFrame {
         this.setLayout(null);
 
         JButton recordButton = new JButton("Record");
-        recordButton.setBounds(0, 20, 120, 30);
+        int x;
+        if (Global.OS.contains("mac")) {
+            x = 0;
+        } else {
+            x = 5;
+        }
+        recordButton.setBounds(x, 20, 120, 30);
         this.add(recordButton);
 
         JLabel xLabel = new JLabel("X:");
@@ -85,7 +91,15 @@ public class RecordWindow extends JFrame {
         });
 
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        final int WIDTH = 340, HEIGHT = 200, OFFSET = 50;
+        final int WIDTH = 340, OFFSET = 50;
+        int HEIGHT;
+        if (Global.OS.contains("mac")) {
+            HEIGHT = 100;
+        } else if (Global.OS.contains("linux")) {
+            HEIGHT = 160;
+        } else {
+            HEIGHT = 110;
+        }
         this.setBounds((int) screenSize.getWidth() - WIDTH - OFFSET, OFFSET, WIDTH, HEIGHT);
         this.setResizable(false);
         this.setVisible(true);

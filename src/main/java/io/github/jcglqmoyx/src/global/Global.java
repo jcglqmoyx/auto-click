@@ -1,6 +1,7 @@
 package io.github.jcglqmoyx.src.global;
 
 import io.github.jcglqmoyx.src.entity.PointEntity;
+import io.github.jcglqmoyx.src.utils.OSUtils;
 
 import javax.swing.*;
 import java.awt.event.InputEvent;
@@ -9,6 +10,7 @@ import java.util.List;
 import java.util.Set;
 
 public class Global {
+    public static final String OS = System.getProperty("os.name").toLowerCase();
     public static final int CLICK_HOT_KEY_FLAG = 1;
     public static final int RECORD_HOT_KEY_FLAG = 2;
     public static final int DEFAULT_CLICKS = Integer.MAX_VALUE;

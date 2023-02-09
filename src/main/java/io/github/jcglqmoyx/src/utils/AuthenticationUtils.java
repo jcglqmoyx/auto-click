@@ -1,5 +1,6 @@
 package io.github.jcglqmoyx.src.utils;
 
+import io.github.jcglqmoyx.src.global.Global;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -19,7 +20,7 @@ public class AuthenticationUtils {
         File credentials = new File(CREDENTIALS_PATH);
         if (!credentials.exists()) {
             String activationCode = JOptionPane.showInputDialog(null, "Please enter your activation code.", "credentials not found", JOptionPane.INFORMATION_MESSAGE, IconUtils.NOTIFICATION, null, null).toString();
-            JSONObject obj = new JSONObject(HttpUtils.post(activationCode, OSUtils.getOSName(), machineID));
+            JSONObject obj = new JSONObject(HttpUtils.post(activationCode, Global.OS, machineID));
             String result = obj.getString("result");
             if (result.equals("success")) {
                 FileUtils.writeToFile(CREDENTIALS_PATH, activationCode);
@@ -37,7 +38,7 @@ public class AuthenticationUtils {
                 return false;
             }
             String activationCode = FileUtils.readFromFile(CREDENTIALS_PATH);
-            JSONObject obj = new JSONObject(HttpUtils.post(activationCode, OSUtils.getOSName(), machineID));
+            JSONObject obj = new JSONObject(HttpUtils.post(activationCode, Global.OS, machineID));
             String result = obj.getString("result");
             if (result.equals("success")) {
                 return true;

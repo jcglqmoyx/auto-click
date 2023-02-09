@@ -100,7 +100,7 @@ public class RecordWindow extends JFrame {
         } else {
             height = 110;
         }
-        this.setBounds((int) screenSize.getWidth() - WIDTH - OFFSET, OFFSET, WIDTH, HEIGHT);
+        this.setBounds((int) screenSize.getWidth() - WIDTH - OFFSET, OFFSET, WIDTH, height);
         this.setResizable(false);
         this.setVisible(true);
         this.setAlwaysOnTop(true);

@@ -25,9 +25,9 @@ public class MainWindow extends NativeFrame {
         if (Global.OS.contains("mac")) {
             height = 480;
         } else if (Global.OS.contains("linux")) {
-            height = 600;
+            height = 550;
         } else if (Global.OS.contains("windows")) {
-            height = 600;
+            height = 550;
         }
         this.setSize(500, height);
         this.setResizable(false);

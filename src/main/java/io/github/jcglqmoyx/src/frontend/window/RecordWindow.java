@@ -85,7 +85,7 @@ public class RecordWindow extends JFrame {
         });
 
         Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
-        final int WIDTH = 340, HEIGHT = 100, OFFSET = 50;
+        final int WIDTH = 340, HEIGHT = 200, OFFSET = 50;
         this.setBounds((int) screenSize.getWidth() - WIDTH - OFFSET, OFFSET, WIDTH, HEIGHT);
         this.setResizable(false);
         this.setVisible(true);

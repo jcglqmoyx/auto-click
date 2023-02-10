@@ -1,7 +1,6 @@
 package io.github.jcglqmoyx.src.global;
 
 import io.github.jcglqmoyx.src.entity.PointEntity;
-import io.github.jcglqmoyx.src.utils.OSUtils;
 
 import javax.swing.*;
 import java.awt.event.InputEvent;

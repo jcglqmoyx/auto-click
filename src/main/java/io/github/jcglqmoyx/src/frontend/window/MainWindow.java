@@ -4,12 +4,13 @@ import com.github.kwhat.jnativehook.NativeHookException;
 import io.github.jcglqmoyx.src.frontend.base.NativeFrame;
 import io.github.jcglqmoyx.src.frontend.panels.*;
 import io.github.jcglqmoyx.src.global.Global;
+import io.github.jcglqmoyx.src.utils.I18NUtils;
 
 import javax.swing.*;
 
 public class MainWindow extends NativeFrame {
     public MainWindow() throws NativeHookException {
-        super("AutoClick");
+        super(I18NUtils.get("title"));
         this.setLayout(null);
 
         this.add(MouseSettingsPanel.getInstance(10, 10, 230, 80));

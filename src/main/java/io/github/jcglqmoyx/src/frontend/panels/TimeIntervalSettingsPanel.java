@@ -1,6 +1,7 @@
 package io.github.jcglqmoyx.src.frontend.panels;
 
 import io.github.jcglqmoyx.src.global.Global;
+import io.github.jcglqmoyx.src.utils.I18NUtils;
 
 import javax.swing.*;
 import javax.swing.text.DefaultFormatterFactory;
@@ -20,7 +21,7 @@ public final class TimeIntervalSettingsPanel extends JPanel {
         final JPanel timeIntervalSpinnerPanel = new JPanel();
         timeIntervalSpinnerPanel.setLayout(new GridLayout(1, 5));
         this.add(timeIntervalSpinnerPanel);
-        final String[] timeIntervals = new String[]{"    hour", "  minute", "  second", "    0.1s", "    0.01s"};
+        final String[] timeIntervals = new String[]{I18NUtils.get("hour"), I18NUtils.get("minute"), I18NUtils.get("second"), I18NUtils.get("tenth.second"), I18NUtils.get("hundredth.second")};
         final JLabel[] timeIntervalLabel = new JLabel[5];
         final JSpinner[] timeIntervalSpinner = new JSpinner[5];
         Global.timeIntervalSpinner = timeIntervalSpinner;

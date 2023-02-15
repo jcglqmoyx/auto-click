@@ -1,5 +1,7 @@
 package io.github.jcglqmoyx.src.frontend.panels;
 
+import io.github.jcglqmoyx.src.utils.I18NUtils;
+
 import javax.swing.*;
 import java.awt.*;
 import java.net.URI;
@@ -14,7 +16,7 @@ public final class HelpAndAboutPanel extends JPanel {
         this.setLayout(new GridLayout(2, 1));
 
         Desktop desktop = Desktop.isDesktopSupported() ? Desktop.getDesktop() : null;
-        final JButton helpButton = new JButton("Help");
+        final JButton helpButton = new JButton(I18NUtils.get("help"));
         helpButton.addActionListener(e -> {
             if (desktop != null && desktop.isSupported(Desktop.Action.BROWSE)) {
                 try {
@@ -26,7 +28,7 @@ public final class HelpAndAboutPanel extends JPanel {
         });
         this.add(helpButton);
 
-        final JButton aboutButton = new JButton("Contact Author");
+        final JButton aboutButton = new JButton(I18NUtils.get("contact.author"));
         aboutButton.addActionListener(e -> {
             if (desktop != null && desktop.isSupported(Desktop.Action.BROWSE)) {
                 try {

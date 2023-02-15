@@ -2,6 +2,7 @@ package io.github.jcglqmoyx.src.frontend.window;
 
 import io.github.jcglqmoyx.src.entity.PointEntity;
 import io.github.jcglqmoyx.src.global.Global;
+import io.github.jcglqmoyx.src.utils.I18NUtils;
 
 import javax.swing.*;
 import java.awt.*;
@@ -14,7 +15,7 @@ public class RecordWindow extends JFrame {
     public RecordWindow() {
         this.setLayout(null);
 
-        JButton recordButton = new JButton("Record");
+        JButton recordButton = new JButton(I18NUtils.get("pick.point"));
         int x;
         if (Global.OS.contains("mac")) {
             x = 0;
@@ -46,7 +47,7 @@ public class RecordWindow extends JFrame {
             }
         }, 0, 100);
 
-        JLabel recordsLabel = new JLabel("Records:");
+        JLabel recordsLabel = new JLabel(I18NUtils.get("records") + ":");
         recordsLabel.setBounds(220, 20, 70, 30);
         this.add(recordsLabel);
         JLabel recordsNumberLabel = new JLabel(String.valueOf(Global.pointsList == null ? 0 : Global.pointsList.size()));

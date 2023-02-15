@@ -1,6 +1,7 @@
 package io.github.jcglqmoyx.src.frontend.panels;
 
 import io.github.jcglqmoyx.src.global.Global;
+import io.github.jcglqmoyx.src.utils.I18NUtils;
 
 import javax.swing.*;
 import java.awt.*;
@@ -9,10 +10,10 @@ public final class AdditionalSettingsPanel extends JPanel {
     private static AdditionalSettingsPanel ADDITIONAL_SETTINGS_PANEL;
 
     private AdditionalSettingsPanel() {
-        this.setBorder(BorderFactory.createTitledBorder("Settings"));
+        this.setBorder(BorderFactory.createTitledBorder(I18NUtils.get("settings")));
         this.setLayout(new GridLayout(2, 2));
 
-        final JCheckBox keepOnTopCheckBox = new JCheckBox("Keep on top");
+        final JCheckBox keepOnTopCheckBox = new JCheckBox(I18NUtils.get("keep.on.top"));
 
         final Container[] container = {this};
         keepOnTopCheckBox.addActionListener(e -> {
@@ -23,7 +24,7 @@ public final class AdditionalSettingsPanel extends JPanel {
         });
         this.add(keepOnTopCheckBox);
 
-        final JCheckBox freezePointerCheckBox = new JCheckBox("Freeze pointer");
+        final JCheckBox freezePointerCheckBox = new JCheckBox(I18NUtils.get("freeze.pointer"));
         Global.freezePointerCheckBox = freezePointerCheckBox;
         freezePointerCheckBox.addActionListener(e -> {
                     if (freezePointerCheckBox.isSelected()) {

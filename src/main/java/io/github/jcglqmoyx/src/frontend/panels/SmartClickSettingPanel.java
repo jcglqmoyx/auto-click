@@ -2,6 +2,7 @@ package io.github.jcglqmoyx.src.frontend.panels;
 
 import io.github.jcglqmoyx.src.global.Global;
 import io.github.jcglqmoyx.src.utils.FileUtils;
+import io.github.jcglqmoyx.src.utils.I18NUtils;
 import io.github.jcglqmoyx.src.utils.IconUtils;
 import io.github.jcglqmoyx.src.utils.RecordScriptUtils;
 
@@ -18,7 +19,7 @@ public final class SmartClickSettingPanel extends JPanel {
         this.setLayout(new GridLayout(3, 1));
 
         final JPanel smartClickPanel = new JPanel(new FlowLayout(FlowLayout.LEFT));
-        final JCheckBox smartClickCheckBox = new JCheckBox("Smart click");
+        final JCheckBox smartClickCheckBox = new JCheckBox(I18NUtils.get("smart.click"));
         Global.smartClickCheckBox = smartClickCheckBox;
         smartClickCheckBox.addActionListener(e -> {
                     if (smartClickCheckBox.isSelected()) {
@@ -36,7 +37,7 @@ public final class SmartClickSettingPanel extends JPanel {
 
         final JPanel recordPanel = new JPanel();
         recordPanel.setLayout(new GridLayout(1, 3));
-        final JLabel recordLabel = new JLabel("   Records:");
+        final JLabel recordLabel = new JLabel(I18NUtils.get("records"));
         this.add(recordLabel);
         final JTextField recordTextField = new JTextField("0");
         Global.recordTextField = recordTextField;
@@ -47,7 +48,7 @@ public final class SmartClickSettingPanel extends JPanel {
         this.add(recordPanel);
 
         final JPanel clearRecordPanel = new JPanel(new GridLayout(1, 3));
-        final JButton clearRecordButton = new JButton("Clear");
+        final JButton clearRecordButton = new JButton(I18NUtils.get("clear"));
         clearRecordButton.addActionListener(e -> {
                     Global.pointsList.clear();
                     Global.recordTextField.setText("0");
@@ -57,7 +58,7 @@ public final class SmartClickSettingPanel extends JPanel {
                 }
         );
         clearRecordPanel.add(clearRecordButton);
-        final JButton saveRecordButton = new JButton("Save");
+        final JButton saveRecordButton = new JButton(I18NUtils.get("save"));
         saveRecordButton.addActionListener(
                 e -> {
                     if (Global.pointsList.isEmpty()) {
@@ -88,7 +89,7 @@ public final class SmartClickSettingPanel extends JPanel {
                 }
         );
         clearRecordPanel.add(saveRecordButton);
-        final JButton loadRecordButton = new JButton("Load");
+        final JButton loadRecordButton = new JButton(I18NUtils.get("load"));
         loadRecordButton.addActionListener(
                 e -> {
                     JFileChooser fileChooser = new JFileChooser();

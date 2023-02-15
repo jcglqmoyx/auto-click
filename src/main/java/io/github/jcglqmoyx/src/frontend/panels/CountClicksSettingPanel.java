@@ -3,6 +3,7 @@ package io.github.jcglqmoyx.src.frontend.panels;
 import io.github.jcglqmoyx.src.global.Global;
 import io.github.jcglqmoyx.src.hander.impl.CountClicksTextFieldHandlerImpl;
 import io.github.jcglqmoyx.src.hander.impl.TextFieldInputLengthRestrictHandlerImpl;
+import io.github.jcglqmoyx.src.utils.I18NUtils;
 
 import javax.swing.*;
 import java.awt.*;
@@ -15,7 +16,7 @@ public final class CountClicksSettingPanel extends JPanel {
         this.setBorder(BorderFactory.createTitledBorder(""));
         this.setLayout(new GridLayout(2, 1));
 
-        final JCheckBox counterCheckBox = new JCheckBox("Counter");
+        final JCheckBox counterCheckBox = new JCheckBox(I18NUtils.get("counter"));
         this.add(counterCheckBox);
 
         final JPanel countClicksPanel = new JPanel();
@@ -38,7 +39,7 @@ public final class CountClicksSettingPanel extends JPanel {
             }
         });
 
-        final JLabel countClicksLabel = new JLabel("times");
+        final JLabel countClicksLabel = new JLabel(I18NUtils.get("times"));
         countClicksPanel.add(countClicksTextField);
         countClicksPanel.add(countClicksLabel);
 

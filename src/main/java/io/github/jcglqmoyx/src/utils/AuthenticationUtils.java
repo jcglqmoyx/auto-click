@@ -14,12 +14,12 @@ public class AuthenticationUtils {
     public static boolean authenticate() throws IOException, JSONException {
         String machineID = OSUtils.getMachineID();
         if (machineID == null) {
-            JOptionPane.showMessageDialog(null, "Your machine is not supported. Please contact the developer.", "Unsupported machine", JOptionPane.ERROR_MESSAGE, IconUtils.ERROR);
+            JOptionPane.showMessageDialog(null, I18NUtils.get("machine.not.supported"), I18NUtils.get("unsupported.machine"), JOptionPane.ERROR_MESSAGE, IconUtils.ERROR);
             return false;
         }
         File credentials = new File(CREDENTIALS_PATH);
         if (!credentials.exists()) {
-            String activationCode = JOptionPane.showInputDialog(null, "Please enter your activation code.", "credentials not found", JOptionPane.INFORMATION_MESSAGE, IconUtils.NOTIFICATION, null, null).toString();
+            String activationCode = JOptionPane.showInputDialog(null, I18NUtils.get("enter.credentials"), I18NUtils.get("credentials.not.found"), JOptionPane.INFORMATION_MESSAGE, IconUtils.NOTIFICATION, null, null).toString();
             JSONObject obj = new JSONObject(HttpUtils.post(activationCode, Global.OS, machineID));
             String result = obj.getString("result");
             if (result.equals("success")) {
@@ -33,8 +33,8 @@ public class AuthenticationUtils {
             }
         } else {
             if (credentials.length() > 1024) {
-                String message = String.format("Your credential file %s is invalid. Delete it and reopen the app", CREDENTIALS_PATH);
-                JOptionPane.showMessageDialog(null, message, "Error", JOptionPane.ERROR_MESSAGE, IconUtils.ERROR);
+                String message = I18NUtils.get("invalid.credentials") + "(" + CREDENTIALS_PATH + ").";
+                JOptionPane.showMessageDialog(null, message, I18NUtils.get("error"), JOptionPane.ERROR_MESSAGE, IconUtils.ERROR);
                 return false;
             }
             String activationCode = FileUtils.readFromFile(CREDENTIALS_PATH);
@@ -47,7 +47,7 @@ public class AuthenticationUtils {
                     String message = obj.getString("error_message");
                     JOptionPane.showMessageDialog(null, message, "Error", JOptionPane.ERROR_MESSAGE, IconUtils.ERROR);
                 } else {
-                    String message = String.format("Credential file %s is invalid, please delete it and retry.", CREDENTIALS_PATH);
+                    String message = I18NUtils.get("invalid.credentials") + "(" + CREDENTIALS_PATH + ").";
                     JOptionPane.showMessageDialog(null, message, "Error", JOptionPane.ERROR_MESSAGE, IconUtils.ERROR);
                 }
                 return false;

@@ -1,6 +1,7 @@
 package io.github.jcglqmoyx.src.frontend.panels;
 
 import io.github.jcglqmoyx.src.global.Global;
+import io.github.jcglqmoyx.src.utils.I18NUtils;
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,7 +13,7 @@ public final class WorkingStatusPanel extends JPanel {
         this.setBorder(BorderFactory.createTitledBorder(""));
         this.setLayout(new GridLayout(1, 1));
 
-        final JButton workingStatusButton = new JButton("Stopped clicking");
+        final JButton workingStatusButton = new JButton(I18NUtils.get("stopped.clicking"));
         Global.workingStatusButton = workingStatusButton;
         workingStatusButton.setForeground(Color.BLUE);
         this.add(workingStatusButton);

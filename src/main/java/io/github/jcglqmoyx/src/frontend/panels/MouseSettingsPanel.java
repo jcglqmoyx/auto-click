@@ -1,6 +1,7 @@
 package io.github.jcglqmoyx.src.frontend.panels;
 
 import io.github.jcglqmoyx.src.global.Global;
+import io.github.jcglqmoyx.src.utils.I18NUtils;
 
 import javax.swing.*;
 import java.awt.*;
@@ -11,36 +12,36 @@ public final class MouseSettingsPanel extends JPanel {
 
     private MouseSettingsPanel() {
         this.setBorder(BorderFactory.createTitledBorder(""));
-        this.setLayout(new GridLayout(2,1));
+        this.setLayout(new GridLayout(2, 1));
 
-        final JLabel mouseLabel = new JLabel("     Mouse");
-        final JComboBox<String> mouseButtonCombobox = new JComboBox<>(new String[]{"left", "middle", "right"});
+        final JLabel mouseLabel = new JLabel(I18NUtils.get("mouse"));
+        final JComboBox<String> mouseButtonCombobox = new JComboBox<>(new String[]{I18NUtils.get("left"), I18NUtils.get("middle"), I18NUtils.get("right")});
         Global.mouseButtonComboBox = mouseButtonCombobox;
         mouseButtonCombobox.addItemListener(e -> {
-            if (e.getItem().equals("left")) {
+            if (e.getItem().equals(I18NUtils.get("left"))) {
                 Global.buttonToClick = InputEvent.BUTTON1_DOWN_MASK;
-                if (Global.recordWindow.isDisplayable() && !Global.pointsList.isEmpty()) {
+                if (Global.recordWindow != null && Global.recordWindow.isDisplayable() && !Global.pointsList.isEmpty()) {
                     Global.pointsList.get(Global.pointsList.size() - 1).setButton(InputEvent.BUTTON1_DOWN_MASK);
                 }
-            } else if (e.getItem().equals("middle")) {
+            } else if (e.getItem().equals(I18NUtils.get("middle"))) {
                 Global.buttonToClick = InputEvent.BUTTON2_DOWN_MASK;
-                if (Global.recordWindow.isDisplayable() && !Global.pointsList.isEmpty()) {
+                if (Global.recordWindow != null && Global.recordWindow.isDisplayable() && !Global.pointsList.isEmpty()) {
                     Global.pointsList.get(Global.pointsList.size() - 1).setButton(InputEvent.BUTTON2_DOWN_MASK);
                 }
             } else {
                 Global.buttonToClick = InputEvent.BUTTON3_DOWN_MASK;
-                if (Global.recordWindow.isDisplayable() && !Global.pointsList.isEmpty()) {
+                if (Global.recordWindow != null && Global.recordWindow.isDisplayable() && !Global.pointsList.isEmpty()) {
                     Global.pointsList.get(Global.pointsList.size() - 1).setButton(InputEvent.BUTTON3_DOWN_MASK);
                 }
             }
         });
 
-        final JLabel clickLabel = new JLabel("       Click");
-        final JComboBox<String> clickComboBox = new JComboBox<>(new String[]{"single", "double"});
+        final JLabel clickLabel = new JLabel(I18NUtils.get("click"));
+        final JComboBox<String> clickComboBox = new JComboBox<>(new String[]{I18NUtils.get("single"), I18NUtils.get("double")});
         Global.clickComboBox = clickComboBox;
         clickComboBox.addItemListener(e -> {
-            Global.isToDoubleClick = e.getItem().equals("double");
-            if (Global.recordWindow.isDisplayable() && !Global.pointsList.isEmpty()) {
+            Global.isToDoubleClick = e.getItem().equals(I18NUtils.get("double"));
+            if (Global.recordWindow != null && Global.recordWindow.isDisplayable() && !Global.pointsList.isEmpty()) {
                 Global.pointsList.get(Global.pointsList.size() - 1).setDoubleClick(Global.isToDoubleClick);
             }
         });

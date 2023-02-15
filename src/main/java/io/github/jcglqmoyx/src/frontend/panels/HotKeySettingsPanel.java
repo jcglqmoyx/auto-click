@@ -2,6 +2,7 @@ package io.github.jcglqmoyx.src.frontend.panels;
 
 import io.github.jcglqmoyx.src.global.Global;
 import io.github.jcglqmoyx.src.hander.impl.HotKeySettingsTextFieldHandlerImpl;
+import io.github.jcglqmoyx.src.utils.I18NUtils;
 
 import javax.swing.*;
 import java.awt.*;
@@ -10,14 +11,14 @@ public final class HotKeySettingsPanel extends JPanel {
     private static HotKeySettingsPanel HOT_KEY_SETTINGS_PANEL;
 
     private HotKeySettingsPanel() {
-        this.setBorder(BorderFactory.createTitledBorder("Hotkey"));
+        this.setBorder(BorderFactory.createTitledBorder(I18NUtils.get("hotkey")));
         this.setLayout(new GridLayout(2, 1));
 
         JPanel clickHotKeyPanel = new JPanel(new GridLayout(1, 2));
         clickHotKeyPanel.setLayout(new BoxLayout(clickHotKeyPanel, BoxLayout.X_AXIS));
         this.add(clickHotKeyPanel);
 
-        final JLabel clickHotKeyLabel = new JLabel("  Click");
+        final JLabel clickHotKeyLabel = new JLabel(I18NUtils.get("click.hotkey.settings"));
         clickHotKeyPanel.add(clickHotKeyLabel);
 
         final JTextField clickHotKeyTextField = new JTextField();
@@ -32,7 +33,7 @@ public final class HotKeySettingsPanel extends JPanel {
         final JPanel recordHotKeyPanel = new JPanel();
         recordHotKeyPanel.setLayout(new BoxLayout(recordHotKeyPanel, BoxLayout.X_AXIS));
         this.add(recordHotKeyPanel);
-        final JLabel recordHotKeyLabel = new JLabel("Record");
+        final JLabel recordHotKeyLabel = new JLabel(I18NUtils.get("record.hotkey.settings"));
         recordHotKeyPanel.add(recordHotKeyLabel);
         final JTextField recordHotKeyTextField = new JTextField();
         recordHotKeyTextField.setEditable(false);

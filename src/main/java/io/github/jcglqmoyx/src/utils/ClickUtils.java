@@ -48,7 +48,7 @@ public class ClickUtils implements Runnable {
             }
             if (cnt == Global.clicks) {
                 Global.isToClick = true;
-                Global.workingStatusButton.setText("Stopped clicking");
+                Global.workingStatusButton.setText(I18NUtils.get("stopped.clicking"));
                 Global.workingStatusButton.setForeground(Color.BLUE);
             }
         } catch (AWTException | InterruptedException e) {
@@ -72,7 +72,7 @@ public class ClickUtils implements Runnable {
             }
             if (cnt == Global.clicks) {
                 Global.isToClick = true;
-                Global.workingStatusButton.setText("Stopped clicking");
+                Global.workingStatusButton.setText(I18NUtils.get("stopped.clicking"));
                 Global.workingStatusButton.setForeground(Color.BLUE);
             }
         } catch (AWTException | InterruptedException e) {
@@ -111,7 +111,7 @@ public class ClickUtils implements Runnable {
 
     @Override
     public void run() {
-        Global.workingStatusButton.setText("Clicking...");
+        Global.workingStatusButton.setText(I18NUtils.get("clicking"));
         Global.workingStatusButton.setForeground(Color.RED);
         if (Global.isToFreezePointer) {
             this.freezePointerClick();

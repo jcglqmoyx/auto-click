@@ -59,9 +59,11 @@ public class ClickUtils implements Runnable {
     private void click() {
         try {
             int cnt = 0;
-//                Robot robot = new Robot(); // On Linux and Windows
+            Robot robot = null;
+            boolean isLinuxOrWindows = Global.OS.contains("linux") || Global.OS.contains("windows");
+            if (isLinuxOrWindows) robot = new Robot();
             for (int i = 0; i < Global.clicks; i++) {
-                Robot robot = new Robot(); // On Mac OS
+                if (!isLinuxOrWindows) robot = new Robot();
                 if (Global.isToDoubleClick) {
                     doubleClick(robot, Global.buttonToClick);
                 } else {
@@ -83,11 +85,13 @@ public class ClickUtils implements Runnable {
     private void smartClick() {
         try {
             int cnt = 0;
-//            Robot robot = new Robot(); On Linux and Windows
+            boolean isLinuxOrWindows = Global.OS.contains("linux") || Global.OS.contains("windows");
+            Robot robot = null;
+            if (isLinuxOrWindows) robot = new Robot();
             for (int i = 0; i < Global.clicks; i++) {
                 for (int j = 0; j < Global.pointsList.size(); j++) {
                     PointEntity pointEntity = Global.pointsList.get(j);
-                    Robot robot = new Robot(); // On Mac OS
+                    if (!isLinuxOrWindows) robot = new Robot();
                     if (Global.pointsList.get(j).isDoubleClick()) {
                         robot.mouseMove(pointEntity.getX(), pointEntity.getY());
                         doubleClick(robot, pointEntity.getButton());

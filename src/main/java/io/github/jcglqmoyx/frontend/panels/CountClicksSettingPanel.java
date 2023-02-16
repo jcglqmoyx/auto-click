@@ -2,12 +2,10 @@ package io.github.jcglqmoyx.frontend.panels;
 
 import io.github.jcglqmoyx.global.Global;
 import io.github.jcglqmoyx.hander.impl.CountClicksTextFieldHandlerImpl;
-import io.github.jcglqmoyx.hander.impl.TextFieldInputLengthRestrictHandlerImpl;
 import io.github.jcglqmoyx.utils.I18NUtils;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ItemEvent;
 
 public final class CountClicksSettingPanel extends JPanel {
     private static CountClicksSettingPanel COUNT_CLICKS_SETTINGS_PANEL;
@@ -17,27 +15,15 @@ public final class CountClicksSettingPanel extends JPanel {
         this.setLayout(new GridLayout(2, 1));
 
         final JCheckBox counterCheckBox = new JCheckBox(I18NUtils.get("counter"));
+        Global.counterCheckBox = counterCheckBox;
         this.add(counterCheckBox);
 
         final JPanel countClicksPanel = new JPanel();
         countClicksPanel.setLayout(new GridLayout(1, 2));
 
         final JTextField countClicksTextField = new JTextField();
-        countClicksTextField.addKeyListener(new CountClicksTextFieldHandlerImpl(counterCheckBox));
-        countClicksTextField.setDocument(new TextFieldInputLengthRestrictHandlerImpl(Global.COUNT_CLICK_TEXT_FIELD_MAXIMUM_INPUT_LENGTH_LIMIT));
-
-        counterCheckBox.addItemListener(e -> {
-            if (e.getStateChange() == ItemEvent.SELECTED) {
-                if (!countClicksTextField.getText().isEmpty()) {
-                    Global.clicks = Long.parseLong(countClicksTextField.getText());
-                } else {
-                    countClicksTextField.setText("0");
-                    Global.clicks = 0;
-                }
-            } else {
-                Global.clicks = Global.DEFAULT_CLICKS;
-            }
-        });
+        Global.countClicksTextField = countClicksTextField;
+        countClicksTextField.addKeyListener(new CountClicksTextFieldHandlerImpl());
 
         final JLabel countClicksLabel = new JLabel(I18NUtils.get("times"));
         countClicksPanel.add(countClicksTextField);

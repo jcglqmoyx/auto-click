@@ -36,7 +36,8 @@ public class ClickUtils implements Runnable {
         try {
             int cnt = 0;
             Robot robot = new Robot();
-            for (int i = 0; i < Global.clicks; i++) {
+            int clicks = getClickCount();
+            for (int i = 0; i < clicks; i++) {
                 robot.mouseMove(x, y);
                 if (Global.isToDoubleClick) {
                     doubleClick(robot, Global.buttonToClick);
@@ -46,7 +47,7 @@ public class ClickUtils implements Runnable {
                 cnt++;
                 Thread.sleep(Global.clickTimeInterval);
             }
-            if (cnt == Global.clicks) {
+            if (cnt == clicks) {
                 Global.isToClick = true;
                 Global.workingStatusButton.setText(I18NUtils.get("stopped.clicking"));
                 Global.workingStatusButton.setForeground(Color.BLUE);
@@ -62,7 +63,8 @@ public class ClickUtils implements Runnable {
             Robot robot = null;
             boolean isLinuxOrWindows = Global.OS.contains("linux") || Global.OS.contains("windows");
             if (isLinuxOrWindows) robot = new Robot();
-            for (int i = 0; i < Global.clicks; i++) {
+            int clicks = getClickCount();
+            for (int i = 0; i < clicks; i++) {
                 if (!isLinuxOrWindows) robot = new Robot();
                 if (Global.isToDoubleClick) {
                     doubleClick(robot, Global.buttonToClick);
@@ -72,7 +74,7 @@ public class ClickUtils implements Runnable {
                 cnt++;
                 Thread.sleep(Global.clickTimeInterval);
             }
-            if (cnt == Global.clicks) {
+            if (cnt == clicks) {
                 Global.isToClick = true;
                 Global.workingStatusButton.setText(I18NUtils.get("stopped.clicking"));
                 Global.workingStatusButton.setForeground(Color.BLUE);
@@ -88,7 +90,8 @@ public class ClickUtils implements Runnable {
             boolean isLinuxOrWindows = Global.OS.contains("linux") || Global.OS.contains("windows");
             Robot robot = null;
             if (isLinuxOrWindows) robot = new Robot();
-            for (int i = 0; i < Global.clicks; i++) {
+            int clicks = getClickCount();
+            for (int i = 0; i < clicks; i++) {
                 for (int j = 0; j < Global.pointsList.size(); j++) {
                     PointEntity pointEntity = Global.pointsList.get(j);
                     if (!isLinuxOrWindows) robot = new Robot();
@@ -103,7 +106,7 @@ public class ClickUtils implements Runnable {
                 }
                 cnt++;
             }
-            if (cnt == Global.clicks) {
+            if (cnt == clicks) {
                 Global.isToClick = true;
                 Global.workingStatusButton.setText("Stopped clicking");
                 Global.workingStatusButton.setForeground(Color.BLUE);
@@ -111,6 +114,20 @@ public class ClickUtils implements Runnable {
         } catch (InterruptedException | AWTException e) {
             e.printStackTrace();
         }
+    }
+
+    public static int getClickCount() {
+        int clicks;
+        try {
+            clicks = Global.counterCheckBox.isSelected() ? Integer.parseInt(Global.countClicksTextField.getText()) : Integer.MAX_VALUE;
+        } catch (NumberFormatException e) {
+            clicks = Integer.MAX_VALUE;
+            Global.countClicksTextField.setText(String.valueOf(Integer.MAX_VALUE));
+            System.out.println("set");
+            e.printStackTrace();
+        }
+        System.out.println(clicks);
+        return clicks;
     }
 
     @Override

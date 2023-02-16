@@ -17,7 +17,8 @@ public class RecordScriptUtils {
         StringBuilder builder = new StringBuilder();
         builder.append("import time\n\n");
         builder.append("import pyautogui as p\n\n");
-        builder.append(String.format("for i in range(%d):\n", Global.clicks));
+
+        builder.append(String.format("for i in range(%d):\n", ClickUtils.getClickCount()));
         for (int i = 0; i < Global.pointsList.size(); i++) {
             PointEntity point = Global.pointsList.get(i);
             builder.append(String.format("\tp.moveTo(%d, %d)\n", point.getX(), point.getY()));
@@ -56,7 +57,6 @@ public class RecordScriptUtils {
                             clicks = clicks * 10 + line.charAt(i) - '0';
                         }
                     }
-                    Global.clicks = clicks;
                 } else if (line.startsWith("\tp.moveTo")) {
                     int indexOfLeftParenthesis = line.indexOf('(');
                     int indexOfComma = line.indexOf(',');

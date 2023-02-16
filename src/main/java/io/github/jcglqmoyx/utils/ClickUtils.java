@@ -123,10 +123,8 @@ public class ClickUtils implements Runnable {
         } catch (NumberFormatException e) {
             clicks = Integer.MAX_VALUE;
             Global.countClicksTextField.setText(String.valueOf(Integer.MAX_VALUE));
-            System.out.println("set");
             e.printStackTrace();
         }
-        System.out.println(clicks);
         return clicks;
     }
 

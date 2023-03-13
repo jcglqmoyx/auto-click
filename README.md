@@ -1,1 +1,1 @@
-An automatic ouse clicker.
+Cross-platform automatic mouse clicker written in Java.

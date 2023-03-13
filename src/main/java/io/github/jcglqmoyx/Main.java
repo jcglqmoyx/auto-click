@@ -9,9 +9,9 @@ import java.io.IOException;
 
 public class Main {
     public static void main(String[] args) throws NativeHookException, IOException, JSONException {
-        if (!AuthenticationUtils.authenticate()) {
-            System.exit(1);
-        }
+//        if (!AuthenticationUtils.authenticate()) {
+//            System.exit(1);
+//        }
         new MainWindow();
     }
 }

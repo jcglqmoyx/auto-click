@@ -8,7 +8,7 @@ import java.net.URI;
 
 public final class HelpAndAboutPanel extends JPanel {
     private static HelpAndAboutPanel HELP_AND_ABOUT_PANEL;
-    private static final String DOCUMENTATION_URL = "https://zhuanlan.zhihu.com/p/605071473";
+    private static final String DOCUMENTATION_URL = "https://zhuanlan.zhihu.com/p/611186534";
     private static final String AUTHOR_CONTACT_URL = "https://linktree.cn/jcglqmoyx";
 
     private HelpAndAboutPanel() {

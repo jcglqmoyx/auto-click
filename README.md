@@ -1,1 +1,1 @@
-# Automatic Mouse clicker
+An automatic ouse clicker.

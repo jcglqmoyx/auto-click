@@ -6,6 +6,7 @@ import io.github.jcglqmoyx.utils.I18NUtils;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.Timer;
@@ -67,7 +68,9 @@ public class RecordWindow extends JFrame {
             @Override
             public void mouseReleased(MouseEvent e) {
                 Point point = MouseInfo.getPointerInfo().getLocation();
-                Global.pointsList.add(new PointEntity(point.x, point.y));
+                PointEntity pointEntity = new PointEntity(point.x, point.y);
+                pointEntity.setButton(KeyEvent.BUTTON1_DOWN_MASK);
+                Global.pointsList.add(pointEntity);
                 recordsNumberLabel.setText(String.valueOf(Global.pointsList.size()));
                 Global.recordTextField.setText(String.valueOf(Global.pointsList.size()));
 
